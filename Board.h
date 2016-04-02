@@ -32,16 +32,18 @@ class Board {
             int position = 1;
             for(auto i : tiles)
             {
+                std::cout << "-------------" << std::endl;
                 for(auto j : i)
                 {
                     if(j == Tile::BLANK)
-                        std::cout << position << "\t";
+                        std::cout << "| " << position << " ";
                     else
-                        std::cout << TileConvertor::to_char(j) << "\t";
+                        std::cout << "| " << TileConvertor::to_char(j) << " ";
                     position ++;
                 }
-                std::cout << std::endl;
+                std::cout << "|" << std::endl;
             } 
+            std::cout << "-------------" << std::endl;
         }
         
         bool is_full()
