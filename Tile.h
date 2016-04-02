@@ -19,5 +19,6 @@ class TileConvertor
                 case Tile::O:
                     return '0';
             }
+            return '!'; // to make MSVC happy
         }    
 };

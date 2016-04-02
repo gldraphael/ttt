@@ -8,11 +8,13 @@
 class Board {
     private:
         std::vector<std::vector<Tile>> tiles;
-        int lastx = -1, lasty = -1;
+        int lastx, lasty;
         
     public:
         Board()
-            :tiles(3, std::vector<Tile>(3, Tile::BLANK))
+            :tiles(3, std::vector<Tile>(3, Tile::BLANK)),
+            lastx(-1),
+            lasty(-1)
         {
             
         }
