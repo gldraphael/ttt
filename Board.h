@@ -2,12 +2,7 @@
 #include <vector>
 #include <stdexcept>
 #include <iostream>
-
-enum class Tile {
-    BLANK,
-    X,
-    O
-};
+#include "Tile.h"
 
 class Board {
     private:
@@ -32,7 +27,7 @@ class Board {
             {
                 for(auto j : i)
                 {
-                    std::cout << static_cast<int>(j) << "\t";
+                    std::cout << TileConvertor::to_char(j) << "\t";
                 }
                 std::cout << std::endl;
             } 
