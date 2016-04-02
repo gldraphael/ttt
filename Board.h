@@ -24,11 +24,16 @@ class Board {
         
         void print()
         {
+            int position = 1;
             for(auto i : tiles)
             {
                 for(auto j : i)
                 {
-                    std::cout << TileConvertor::to_char(j) << "\t";
+                    if(j == Tile::BLANK)
+                        std::cout << position << "\t";
+                    else
+                        std::cout << TileConvertor::to_char(j) << "\t";
+                    position ++;
                 }
                 std::cout << std::endl;
             } 
