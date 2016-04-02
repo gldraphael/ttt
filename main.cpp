@@ -4,7 +4,9 @@ using namespace std;
 
 int main()
 {
+    cout << "Welcome to TicTacToe!" << endl;
     Board b;
+    b.print();
     while(!b.is_game_over())
     {
         int i;
