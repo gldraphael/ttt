@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
     Board b;
-    while(!b.is_full())
+    while(!b.is_game_over())
     {
         int i;
         cin >> i;
