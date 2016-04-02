@@ -7,7 +7,7 @@
 class Board {
     private:
         std::vector<std::vector<Tile>> tiles;
-              
+        
     public:
         Board()
             :tiles(3, std::vector<Tile>(3, Tile::BLANK))
@@ -19,6 +19,7 @@ class Board {
         {
             if(t == Tile::BLANK)
                 throw std::runtime_error("Tile cannot be set to BLANK");
+                tiles[y][x] = t;
         }
         
         void print()
@@ -31,5 +32,14 @@ class Board {
                 }
                 std::cout << std::endl;
             } 
+        }
+        
+        bool is_full()
+        {
+            for(auto i:tiles)
+                for(auto j:i)
+                    if(j == Tile::BLANK)
+                        return false;
+            return true;
         }
 };
