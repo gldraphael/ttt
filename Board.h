@@ -4,6 +4,9 @@
 #include <iostream>
 #include "Tile.h"
 #include "util.h"
+#ifdef _WIN32
+#include "windows.h"
+#endif
 
 class Board {
     private:
@@ -29,6 +32,49 @@ class Board {
             lasty = y;
         }
         
+        #ifdef _WIN32
+        
+        void print()
+        {
+            HANDLE hConsole;
+            hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+    
+            int position = 1;
+            for(auto i : tiles)
+            {
+                SetConsoleTextAttribute(hConsole, 0x0B);
+                std::cout << "-------------" << std::endl;
+                for(auto j : i)
+                {
+                    if(j == Tile::BLANK)
+                    {
+                        SetConsoleTextAttribute(hConsole, 0x0B);
+                        std::cout << "| ";
+                        SetConsoleTextAttribute(hConsole, 0x08);
+                        std::cout << position << " ";
+                    }
+                    else
+                    {
+                        SetConsoleTextAttribute(hConsole, 0x0B);
+                        std::cout << "| ";
+                        char v = TileConvertor::to_char(j);
+                        if(v == 'X')
+                            SetConsoleTextAttribute(hConsole, 0x0E);
+                        else if(v == '0')
+                            SetConsoleTextAttribute(hConsole, 0x0C);
+                        std::cout << v << " ";
+                    }
+                    position ++;
+                }
+                SetConsoleTextAttribute(hConsole, 0x0B);
+                std::cout << "|" << std::endl;
+            }
+            SetConsoleTextAttribute(hConsole, 0x0B); 
+            std::cout << "-------------" << std::endl;
+            SetConsoleTextAttribute(hConsole, 0x0F);
+        }
+        #else
+        
         void print()
         {
             int position = 1;
@@ -47,6 +93,8 @@ class Board {
             } 
             std::cout << "-------------" << std::endl;
         }
+        
+        #endif
         
         bool is_full()
         {
