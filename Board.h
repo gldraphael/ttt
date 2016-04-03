@@ -7,6 +7,7 @@
 #ifdef _WIN32
 #include "windows.h"
 #endif
+#include "colorcodes.h"
 
 class Board {
     private:
@@ -73,8 +74,30 @@ class Board {
             std::cout << "-------------" << std::endl;
             SetConsoleTextAttribute(hConsole, 0x0F);
         }
-        #else
+        #elif __linux__ || __APPLE__
         
+        void print()
+        {
+            int position = 1;
+            for(auto i : tiles)
+            {
+                std::cout << KCYN "-------------" << std::endl;
+                for(auto j : i)
+                {
+                    if(j == Tile::BLANK)
+                        std::cout << KCYN "| " KWHT << position << " ";
+                    else if(j == Tile::X)
+                        std::cout << KCYN "| " KRED << TileConvertor::to_char(j) << " ";
+                    else // j == Tile::O
+                        std::cout << KCYN "| " KYEL << TileConvertor::to_char(j) << " ";
+                    position ++;
+                }
+                std::cout << KCYN "|" << std::endl;
+            } 
+            std::cout << "-------------" RESET << std::endl;
+        }
+        
+        #else
         void print()
         {
             int position = 1;
@@ -93,7 +116,6 @@ class Board {
             } 
             std::cout << "-------------" << std::endl;
         }
-        
         #endif
         
         bool is_full()
