@@ -56,11 +56,11 @@ class Game {
             // Initial prompt
             b.print();
             
-            // Tile playerTiles[2] = { Tile::X, Tile::O };
             int currentPlayer = -1;
+            bool gameOver = false;
             
             // A typical game loop
-            while(!b.is_game_over())
+            while(!gameOver && !b.is_full())
             {
                 currentPlayer = (currentPlayer + 1) % 2;
                 
@@ -72,8 +72,17 @@ class Game {
                 
                 // Draw
                 draw();
+                
+                gameOver = b.is_game_over();
             }
             
-            std::cout<<"Player "<< (currentPlayer + 1) <<" has won!"<<std::endl;
+            if(gameOver)
+            {
+                std::cout<<"Player "<< (currentPlayer + 1) <<" has won!"<<std::endl;    
+            }
+            else
+            {
+                std::cout<<"The game is draw!"<<std::endl;   
+            }
         }
 };
