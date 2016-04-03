@@ -56,17 +56,24 @@ class Game {
             // Initial prompt
             b.print();
             
+            // Tile playerTiles[2] = { Tile::X, Tile::O };
+            int currentPlayer = -1;
+            
             // A typical game loop
             while(!b.is_game_over())
             {
+                currentPlayer = (currentPlayer + 1) % 2;
+                
                 // Get input 
                 int i = get_input();
                 
                 // Update state
-                b.set_tile((i-1)%3, (i - 1)/3, Tile::X);
+                b.set_tile((i-1)%3, (i - 1)/3, static_cast<Tile>(currentPlayer+1));
                 
                 // Draw
                 draw();
             }
+            
+            std::cout<<"Player "<< (currentPlayer + 1) <<" has won!"<<std::endl;
         }
 };
