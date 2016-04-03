@@ -17,6 +17,11 @@ class Game {
             {
                 if(i >= 1 && i <= 9)
                 {
+                    if(b.is_tile_set((i-1)%3, (i - 1)/3))
+                    {
+                        std::cout << "You can\'t overwrite that! Enter another position: ";
+                        return get_input();
+                    }
                     return i;
                 }
                 else {

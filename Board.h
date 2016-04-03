@@ -33,6 +33,11 @@ class Board {
             lasty = y;
         }
         
+        bool is_tile_set(int x, int y)
+        {
+            return tiles[y][x] != Tile::BLANK;
+        }
+        
         #ifdef _WIN32
         
         void print()
