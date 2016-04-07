@@ -8,11 +8,19 @@ using std::cin;
 class Game {
     private:
         Board b;
+        int currentPlayer;
+        bool gameOver;
     
     public:
+    
+        Game()
+            : currentPlayer(-1), gameOver(false)
+        { }
+    
         int get_input()
         {
             int i;
+            std::cout << "P" << currentPlayer + 1 << ": ";
             if(cin >> i)
             {
                 if(i >= 1 && i <= 9)
@@ -55,9 +63,6 @@ class Game {
         {
             // Initial prompt
             b.print();
-            
-            int currentPlayer = -1;
-            bool gameOver = false;
             
             // A typical game loop
             while(!gameOver && !b.is_full())
