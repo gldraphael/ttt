@@ -1,4 +1,5 @@
-INPUT_FILES=main.cpp
+SOURCE_DIR=src
+INPUT_FILES=$(SOURCE_DIR)/main.cpp
 
 all:
 	g++ -std=c++0x -Werror $(INPUT_FILES)
