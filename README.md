@@ -13,12 +13,22 @@ I've also written one using MonoGame if you're looking for GUI: https://github.c
 Alternatively you may paste this in your terminal:
 
 ```bash
-https://github.com/gldraphael/ttt.git
+git clone https://github.com/gldraphael/ttt.git
 cd ttt
+make
 ./a.out
 ```
 
 _Also tested on windows using MSVC. Use `cl /EHsc src/main.cpp` to build._
+
+For windows use:
+
+```bash
+git clone https://github.com/gldraphael/ttt.git
+cd ttt
+cl /EHsc src/main.cpp
+./main.exe
+```
 
 ## Requirements
 
